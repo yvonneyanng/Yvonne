@@ -1,4 +1,4 @@
-import { HStack, Stack, Text, List, Image, Icon } from "@chakra-ui/react";
+import { HStack, Stack, Text, Image } from "@chakra-ui/react";
 import SectionTitle from "../SectionTitle";
 
 import headshot from "../../assets/headshot.jpg";
