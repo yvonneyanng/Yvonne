@@ -3,12 +3,11 @@ import { Text } from "@chakra-ui/react";
 const SectionTitle = ({ title }: { title: string }) => {
   return (
     <Text
-      variant="h4"
       color="#fff"
       fontWeight="900"
-      fontSize="50px"
+      fontSize={{ base: "30px", md: "50px" }}
       textAlign="left"
-      mt="170px"
+      mt={{ base: "100px", md: "170px" }}
     >
       {title}
     </Text>

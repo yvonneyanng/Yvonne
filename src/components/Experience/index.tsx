@@ -1,4 +1,4 @@
-import { Box, HStack, Stack, Text } from "@chakra-ui/react";
+import { Box, HStack, Select, Stack, Text } from "@chakra-ui/react";
 import SectionTitle from "../SectionTitle";
 import { useState } from "react";
 
@@ -28,6 +28,13 @@ const Experience = () => {
     },
   ];
   const [clicked, setClicked] = useState(0);
+  const handleChange = (event: { target: { value: string } }) => {
+    const selectedIndex = parseInt(event.target.value, 10);
+    setClicked(selectedIndex);
+    // You can also call setClicked or any other method to handle the selection
+    console.log("Selected company:", experience[selectedIndex].company); // Just for debug
+  };
+
   return (
     <>
       <Stack
@@ -44,43 +51,18 @@ const Experience = () => {
         <Stack
           spacing="100px"
           align="start"
-          mt="50px"
-          mx="300px"
+          mt={{ base: "0px", md: "50px" }}
+          mx={{ base: "40px", md: "300px" }}
           direction={{ base: "column", md: "row" }}
         >
-          <Stack>
+          <Stack
+            align="start"
+            display={{ base: "none", md: "inline-flex" }}
+            mt="10px"
+          >
             {experience.map((desc, index) => (
-              // <Text
-              //   key={index}
-              //   variant="body1"
-              //   color={index === clicked ? "#00e6e6" : "#fff"}
-              //   onClick={() => setClicked(index)}
-              //   cursor="pointer"
-              //   fontFamily="monospace"
-              //   fontSize="15px"
-              //   fontWeight="bold"
-              //   py="10px"
-              //   px="10px"
-              //   whiteSpace="nowrap"
-              // _hover={{
-              //   borderRight: "2px solid #00e6e6",
-              //   py: "15px",
-              //   px: "8px",
-              // }}
-              // _after={{
-              //   content: '""',
-              //   display: "block",
-              //   height: "2px",
-              //   width: "0",
-              //   backgroundColor: "#00e6e6",
-              //   transition: "width 0.3s",
-              // }}
-              // >
-              //   {desc.company}
-              // </Text>
               <Box
                 position="relative"
-                display="inline-block"
                 _hover={{
                   color: "#00e6e6", // Change text color on hover
                   _after: {
@@ -117,25 +99,49 @@ const Experience = () => {
             ))}
           </Stack>
           <Stack fontFamily="monospace">
-            <Text
-              color="#00e6e6"
-              fontSize="25px"
-              textAlign="start"
-              mt="10px"
-              fontWeight="900"
+            <Select
+              display={{ base: "inline-block", md: "none" }}
+              color="#fff"
+              my="25px"
+              fontSize="15px"
+              borderColor="#00e6e6"
+              onChange={handleChange}
             >
-              {experience[clicked].title}
-            </Text>
-            <Text variant="subtitle2" color="#9b9b9b" fontSize="20px">
-              {experience[clicked].date} | {experience[clicked].location}
-            </Text>
+              {experience.map((desc, index) => (
+                <option key={index} value={index}>
+                  {desc.company}
+                </option>
+              ))}
+            </Select>
+            <Stack textAlign={{ base: "center", md: "start" }}>
+              <Text
+                color="#00e6e6"
+                fontSize={{ base: "17px", md: "25px" }}
+                mt={{ base: "0", md: "10px" }}
+                fontWeight="900"
+                w="full"
+              >
+                {experience[clicked].title}
+              </Text>
+              <Text
+                variant="subtitle2"
+                color="#9b9b9b"
+                fontSize={{ base: "12px", md: "20px" }}
+              >
+                {experience[clicked].date} | {experience[clicked].location}
+              </Text>
+            </Stack>
             <Stack mt="20px" spacing="20px">
               {experience[clicked].description.map((desc, index) => (
                 <HStack px="0" justify="start">
-                  <Text color="#00e6e6" fontSize="30px">
+                  <Text color="#00e6e6" fontSize={{ base: "20px", md: "30px" }}>
                     ▹
                   </Text>
-                  <Text key={index} color="#fff" fontSize="15px">
+                  <Text
+                    key={index}
+                    color="#fff"
+                    fontSize={{ base: "12px", md: "15px" }}
+                  >
                     {desc}
                   </Text>
                 </HStack>

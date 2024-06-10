@@ -36,10 +36,22 @@ const Project = () => {
   ];
   return (
     <>
-      <Stack w="100vw" h="100vh" align="center" bg="#2b2b2b" id="projects">
+      <Stack
+        w="100vw"
+        h={{ base: "fit-content", md: "100vh" }}
+        align="center"
+        bg="#2b2b2b"
+        id="projects"
+        pb={{ base: "50px", md: "0" }}
+      >
         <SectionTitle title="Projects" />
 
-        <Grid w="70vw" templateColumns="repeat(3, 1fr)" gap={5} mt="50px">
+        <Grid
+          w="70vw"
+          templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
+          gap={5}
+          mt="50px"
+        >
           {projects.map((project, index) => (
             <GridItem
               key={index}
@@ -56,7 +68,7 @@ const Project = () => {
             >
               <HStack justify="space-between" align="center">
                 <Text
-                  fontSize={20}
+                  fontSize={{ base: "15px", md: "20px" }}
                   fontWeight="bold"
                   fontFamily="monospace"
                   color="#00e6e6"
@@ -72,12 +84,18 @@ const Project = () => {
                   onClick={() => window.open(project.link, "_blank")}
                 />
               </HStack>
-              <Text color="#9b9b9b" mt={7}>
+              <Text
+                color="#9b9b9b"
+                mt={5}
+                fontSize={{ base: "13px", md: "15px" }}
+              >
                 {project.introduction}
               </Text>
               <Wrap mt={5}>
                 {project.technologies.map((tech, index) => (
-                  <Tag key={index}>{tech}</Tag>
+                  <Tag key={index} fontSize={{ base: "13px", md: "15px" }}>
+                    {tech}
+                  </Tag>
                 ))}
               </Wrap>
             </GridItem>

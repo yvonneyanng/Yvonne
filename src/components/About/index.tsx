@@ -28,18 +28,26 @@ const About = () => {
     <>
       <Stack
         h="100vh"
-        px="300px"
+        px={{ base: "50px", md: "300px" }}
         display="flex"
         direction="column"
         justify="start"
         align="center"
         bg="#2b2b2b"
         id="about"
-        spacing="100px"
+        spacing={{ base: "30px", md: "100px" }}
       >
         <SectionTitle title="About Me" />
-        <HStack spacing="100px" align="start">
-          <Stack fontSize="15px" textAlign="left" fontFamily="monospace">
+        <Stack
+          spacing={{ base: "30px", md: "100px" }}
+          align={{ base: "center", md: "start" }}
+          direction={{ base: "column-reverse", md: "row" }}
+        >
+          <Stack
+            fontSize={{ base: "12px", md: "15px" }}
+            textAlign={{ base: "center", md: "start" }}
+            fontFamily="monospace"
+          >
             <Text color="#fff">
               I’m a software engineer currently working with{" "}
               <b
@@ -58,7 +66,7 @@ const About = () => {
             <Text mt={5} color="#fff">
               Here are some technologies I've been working with:
             </Text>
-            <HStack spacing={5} mt={3}>
+            <HStack spacing={3} mt={3}>
               {technologies.map((tech, index) => (
                 // <HStack key={index} flexDirection="row">
                 //   <Text color="#00e6e6" fontSize="10px">
@@ -68,18 +76,23 @@ const About = () => {
                 //     {tech}
                 //   </Text>
                 // </HStack>
-                <Image src={tech} alt="Tech" key={index} boxSize="30px" />
+                <Image
+                  src={tech}
+                  alt="Tech"
+                  key={index}
+                  boxSize={{ base: "20px", md: "30px" }}
+                />
               ))}
             </HStack>
           </Stack>
           <Image
             src={headshot}
             alt="Yvonne"
-            boxSize="300px"
+            boxSize={{ base: "150px", md: "300px" }}
             objectFit="cover"
             borderRadius="10px"
           />
-        </HStack>
+        </Stack>
       </Stack>
     </>
   );

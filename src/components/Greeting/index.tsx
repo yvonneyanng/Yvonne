@@ -30,14 +30,17 @@ const Home = () => {
           0 0 10px #00e6e6       /* More outer glow for depth */
         `}
       >
-        <Text color="#fff" fontWeight="900" fontSize="50px">
+        <Text
+          color="#fff"
+          fontWeight="900"
+          fontSize={{ base: "25px", md: "50px" }}
+        >
           Hi, I'm Yvonne
         </Text>
         <Text
-          variant="h6"
           textAlign="center"
           color="#9b9b9b"
-          fontSize="20px"
+          fontSize={{ base: "15px", md: "20px" }}
           fontFamily="monospace"
         >
           Welcome to my portfolio where technology meets creativity.

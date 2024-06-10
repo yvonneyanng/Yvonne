@@ -30,13 +30,16 @@ function Navbar() {
         px={10}
         py={7}
         justify="space-between"
+        direction={{ base: "column", md: "row" }}
       >
         <Text
           fontFamily="monospace"
           fontWeight={700}
-          fontSize={20}
+          fontSize="20px"
           letterSpacing=".3rem"
           color="#ffffff"
+          w="full"
+          textAlign={{ base: "center", md: "left" }}
           textShadow={`
                 0 0 5px #00e6e6, 
                 0 0 10px #00e6e6, 
@@ -51,7 +54,7 @@ function Navbar() {
           Yvonne Yang
         </Text>
 
-        <HStack>
+        <HStack display={{ base: "none", md: "flex" }}>
           {pages.map((page) => (
             <Link
               key={page}
