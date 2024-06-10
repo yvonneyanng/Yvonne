@@ -1,18 +1,49 @@
-import Box from "@mui/material/Box";
+import { Stack, Text } from "@chakra-ui/react";
 
 const Home = () => {
   return (
-    <Box
-      sx={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        bgcolor: "red",
-      }}
+    <Stack
+      w="100vw"
+      h="100vh"
+      display="flex"
+      direction="column"
+      justify="center"
+      align="center"
+      bg="#1b1b1b"
+      id="home"
     >
-      Home
-    </Box>
+      <Stack
+        w="70vw"
+        h="50vh"
+        p="30px"
+        m="50px"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        border="8px solid #00e6e6" // Neon color border
+        borderRadius="10px" // Optional: if you want rounded corners
+        boxShadow={`
+          inset 0 0 5px #00e6e6,  /* Inner light glow */
+          inset 0 0 10px #00e6e6, /* More inner glow */
+          0 0 5px #00e6e6,       /* Slight outer glow for depth */
+          0 0 10px #00e6e6       /* More outer glow for depth */
+        `}
+      >
+        <Text color="#fff" fontWeight="900" fontSize="50px">
+          Hi, I'm Yvonne
+        </Text>
+        <Text
+          variant="h6"
+          textAlign="center"
+          color="#9b9b9b"
+          fontSize="20px"
+          fontFamily="monospace"
+        >
+          Welcome to my portfolio where technology meets creativity.
+        </Text>
+      </Stack>
+    </Stack>
   );
 };
 
