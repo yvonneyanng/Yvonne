@@ -42,15 +42,15 @@ const Project = () => {
         align="center"
         bg="#2b2b2b"
         id="projects"
-        pb={{ base: "50px", md: "0" }}
+        py={{ base: "50px", md: "0" }}
       >
         <SectionTitle title="Projects" />
 
         <Grid
-          w="70vw"
+          w={{ base: "90vw", md: "70vw" }}
           templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
           gap={5}
-          mt="50px"
+          mt={{ base: "20px", md: "50px" }}
         >
           {projects.map((project, index) => (
             <GridItem
@@ -68,7 +68,7 @@ const Project = () => {
             >
               <HStack justify="space-between" align="center">
                 <Text
-                  fontSize={{ base: "15px", md: "20px" }}
+                  fontSize={{ base: "18px", md: "20px" }}
                   fontWeight="bold"
                   fontFamily="monospace"
                   color="#00e6e6"

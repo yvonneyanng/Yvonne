@@ -39,7 +39,8 @@ const Experience = () => {
     <>
       <Stack
         w="100vw"
-        h="100vh"
+        h={{ base: "fit-content", md: "100vh" }}
+        py={{ base: "50px", md: "0" }}
         display="flex"
         direction="column"
         justify="start"

@@ -1,8 +1,9 @@
-import { HStack, Icon, Stack, Text } from "@chakra-ui/react";
+import { HStack, Icon, Link, Stack, Text } from "@chakra-ui/react";
 
 import { BsInstagram } from "react-icons/bs";
 import { ImLinkedin } from "react-icons/im";
 import { FaGithub } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
   const icons = [
@@ -34,6 +35,14 @@ const Footer = () => {
           &copy; All Rights Reserved by Yvonne Yang.
         </Text>
         <HStack color="#9b9b9b" spacing={5}>
+          <Link
+            href="mailto:message@yvonneyang.me"
+            isExternal
+            cursor="pointer"
+            _hover={{ color: "#00e6e6" }}
+          >
+            <MdEmail fontSize={25} color="blue.500" />
+          </Link>
           {icons.map((icon, index) => (
             <Icon
               as={icon.icon}

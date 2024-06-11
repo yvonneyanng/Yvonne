@@ -27,8 +27,9 @@ const About = () => {
   return (
     <>
       <Stack
-        h="100vh"
+        h={{ base: "fit-content", md: "100vh" }}
         px={{ base: "50px", md: "300px" }}
+        py={{ base: "50px", md: "0" }}
         display="flex"
         direction="column"
         justify="start"
@@ -49,7 +50,16 @@ const About = () => {
             fontFamily="monospace"
           >
             <Text color="#fff">
-              I’m a software engineer currently working with{" "}
+              I’m currently a <b>postgraduate student</b> at{" "}
+              <b
+                style={{
+                  color: "#00e6e6",
+                  fontWeight: "bold",
+                }}
+              >
+                University of Technology Sydney
+              </b>
+              . At the same time, I'm a <b>software engineer</b> with{" "}
               <b
                 style={{
                   color: "#00e6e6",
@@ -58,15 +68,17 @@ const About = () => {
               >
                 UTS Motorsports Electric
               </b>
-              , where I leverage cutting-edge technology to enhance our race
-              car's solutions. My passion lies in the intersection of technology
-              and creativity, driving me towards my aspiration of becoming a
-              Pipeline Technical Director.
+              .
             </Text>
             <Text mt={5} color="#fff">
-              Here are some technologies I've been working with:
+              Here are some technologies I've worked with:
             </Text>
-            <HStack spacing={3} mt={3}>
+            <HStack
+              spacing={3}
+              mt={3}
+              mb={5}
+              justify={{ base: "center", md: "start" }}
+            >
               {technologies.map((tech, index) => (
                 // <HStack key={index} flexDirection="row">
                 //   <Text color="#00e6e6" fontSize="10px">
@@ -84,6 +96,11 @@ const About = () => {
                 />
               ))}
             </HStack>
+            <Text color="#fff">
+              Apart from technology, I'm also facinated by those cool vfx in
+              movies, the passion of blending technology and creaticity fuels my
+              aspiration to become a <b>Pipeline Technical Director</b>.
+            </Text>
           </Stack>
           <Image
             src={headshot}

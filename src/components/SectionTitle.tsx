@@ -7,7 +7,7 @@ const SectionTitle = ({ title }: { title: string }) => {
       fontWeight="900"
       fontSize={{ base: "30px", md: "50px" }}
       textAlign="left"
-      mt={{ base: "100px", md: "170px" }}
+      mt={{ base: "0", md: "170px" }}
     >
       {title}
     </Text>

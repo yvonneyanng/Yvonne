@@ -28,14 +28,14 @@ function Navbar() {
         backdropFilter={`blur(${window.scrollY / 100}px)`}
         w="100%"
         px={10}
-        py={7}
+        py={{ base: 5, md: 7 }}
         justify="space-between"
         direction={{ base: "column", md: "row" }}
       >
         <Text
           fontFamily="monospace"
           fontWeight={700}
-          fontSize="20px"
+          fontSize={{ base: "16px", md: "20px" }}
           letterSpacing=".3rem"
           color="#ffffff"
           w="full"
