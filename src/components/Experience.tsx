@@ -1,5 +1,5 @@
 import { Box, HStack, Select, Stack, Text } from "@chakra-ui/react";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "./SectionTitle";
 import { useState } from "react";
 
 const Experience = () => {

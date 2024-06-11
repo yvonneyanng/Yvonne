@@ -1,16 +1,16 @@
 import { HStack, Stack, Text, Image } from "@chakra-ui/react";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "./SectionTitle";
 
-import headshot from "../../assets/headshot.jpg";
-import js from "../../assets/js.png";
-import python from "../../assets/python.png";
-import java from "../../assets/java.png";
-import swift from "../../assets/swift.png";
-import typescript from "../../assets/typescript.png";
-import salesforce from "../../assets/salesforce.png";
-import aws from "../../assets/aws.png";
-import react from "../../assets/react.png";
-import sass from "../../assets/sass.png";
+import headshot from "../assets/headshot.jpg";
+import js from "../assets/js.png";
+import python from "../assets/python.png";
+import java from "../assets/java.png";
+import swift from "../assets/swift.png";
+import typescript from "../assets/typescript.png";
+import salesforce from "../assets/salesforce.png";
+import aws from "../assets/aws.png";
+import react from "../assets/react.png";
+import sass from "../assets/sass.png";
 
 const About = () => {
   const technologies = [
@@ -97,8 +97,8 @@ const About = () => {
               ))}
             </HStack>
             <Text color="#fff">
-              Apart from technology, I'm also facinated by those cool vfx in
-              movies, the passion of blending technology and creaticity fuels my
+              Apart from technology, I'm also fascinated by those cool vfx in
+              movies, the passion of blending technology and creativity fuels my
               aspiration to become a <b>Pipeline Technical Director</b>.
             </Text>
           </Stack>

@@ -9,7 +9,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "./SectionTitle";
 import { FaGithubSquare } from "react-icons/fa";
 
 const Project = () => {
