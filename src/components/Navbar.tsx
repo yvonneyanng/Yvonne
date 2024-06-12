@@ -9,7 +9,7 @@ function Navbar() {
 
   const handleScroll = () => {
     const show = window.scrollY > 50;
-    setNavBackground(show ? "rgba(0, 0, 0, 0.8)" : "transparent");
+    setNavBackground(show ? "rgba(0, 0, 0, 0.6)" : "transparent");
   };
 
   useEffect(() => {
@@ -31,6 +31,7 @@ function Navbar() {
         py={{ base: 5, md: 7 }}
         justify="space-between"
         direction={{ base: "column", md: "row" }}
+        zIndex={100}
       >
         <Text
           fontFamily="monospace"

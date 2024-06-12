@@ -6,6 +6,7 @@ const SectionTitle = ({ title }: { title: string }) => {
       color="#fff"
       fontWeight="900"
       fontSize={{ base: "30px", md: "50px" }}
+      fontFamily="monospace"
       textAlign="left"
       mt={{ base: "0", md: "170px" }}
     >

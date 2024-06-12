@@ -1,6 +1,16 @@
-import { Box, HStack, Select, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  List,
+  ListIcon,
+  Select,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import SectionTitle from "./SectionTitle";
 import { useState } from "react";
+
+import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 
 const Experience = () => {
   const experience = [
@@ -10,8 +20,18 @@ const Experience = () => {
       location: "Sydney, Australia",
       date: "Mar 2024 - Present",
       description: [
-        "Constructed live telemetry system using React and AWS, enabling real-time monitoring of race data.",
+        "Constructed live telemetry system with several AWS services including Timestream and Grafana, enabling real-time monitoring of race data.",
         "Maintained team’s website using WordPress, ensuring seamless functionality and up-to-date content.",
+      ],
+    },
+    {
+      title: "Podcast Editor",
+      company: "Australia Career Forum",
+      location: "Sydeny, Australia",
+      date: "Feb 2024 - Present",
+      description: [
+        "Edited and produced podcast content with GarageBand, improving audio quality and listener experience.",
+        "Worked with producers to align editing with narrative goals, ensuring smooth flow and audience engagement.",
       ],
     },
     {
@@ -20,8 +40,8 @@ const Experience = () => {
       location: "Taichung, Taiwan",
       date: "Aug 2023 - Dec 2023",
       description: [
-        "Developed user interface of a Mandarin tutoring website — baodaotalk.com (first version) using Next.js.",
-        "Designed an interactive quiz feature for baodaotalk.com website to enhance learning engagement.",
+        "Developed user interface of a Mandarin tutoring website — baodaotalk.com using Next.js.",
+        "Designed an interactive quiz feature for baodaotalk.com to enhance learning engagement.",
         "Enabled multilingual support for baodaotalk.com, accommodating 7 languages through internationalization.",
         "Collaborated with full stack developer and UI designer to help optimize user experience of website.",
       ],
@@ -127,17 +147,19 @@ const Experience = () => {
               <Text
                 variant="subtitle2"
                 color="#9b9b9b"
-                fontSize={{ base: "12px", md: "20px" }}
+                fontSize={{ base: "12px", md: "18px" }}
               >
                 {experience[clicked].date} | {experience[clicked].location}
               </Text>
             </Stack>
-            <Stack mt="20px" spacing="20px">
+            <List mt="20px" spacing="10px" fontSize="15px">
               {experience[clicked].description.map((desc, index) => (
-                <HStack px="0" justify="start">
-                  <Text color="#00e6e6" fontSize={{ base: "20px", md: "30px" }}>
-                    ▹
-                  </Text>
+                <Flex color="#fff" align="start">
+                  <ListIcon
+                    as={VscDebugBreakpointLogUnverified}
+                    color="#00e6e6"
+                    fontSize={{ base: "15px", md: "20px" }}
+                  />
                   <Text
                     key={index}
                     color="#fff"
@@ -145,9 +167,9 @@ const Experience = () => {
                   >
                     {desc}
                   </Text>
-                </HStack>
+                </Flex>
               ))}
-            </Stack>
+            </List>
           </Stack>
         </Stack>
       </Stack>

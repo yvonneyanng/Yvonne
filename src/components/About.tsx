@@ -24,6 +24,11 @@ const About = () => {
     react,
     sass,
   ];
+
+  const titleStyle = {
+    color: "#00e6e6",
+    fontWeight: "bold",
+  };
   return (
     <>
       <Stack
@@ -50,25 +55,10 @@ const About = () => {
             fontFamily="monospace"
           >
             <Text color="#fff">
-              I’m currently a <b>postgraduate student</b> at{" "}
-              <b
-                style={{
-                  color: "#00e6e6",
-                  fontWeight: "bold",
-                }}
-              >
-                University of Technology Sydney
-              </b>
-              . At the same time, I'm a <b>software engineer</b> with{" "}
-              <b
-                style={{
-                  color: "#00e6e6",
-                  fontWeight: "bold",
-                }}
-              >
-                UTS Motorsports Electric
-              </b>
-              .
+              I’m currently a <b>Postgraduate Student</b> at{" "}
+              <b style={titleStyle}>University of Technology Sydney</b>. At the
+              same time, I'm a <b>Software Engineer</b> with{" "}
+              <b style={titleStyle}>UTS Motorsports Electric</b>.
             </Text>
             <Text mt={5} color="#fff">
               Here are some technologies I've worked with:

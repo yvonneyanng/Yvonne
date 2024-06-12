@@ -35,7 +35,8 @@ const Home = () => {
           <Text
             color="#fff"
             fontWeight="900"
-            fontSize={{ base: "25px", md: "50px" }}
+            fontSize={{ base: "20px", md: "50px" }}
+            fontFamily="monospace"
           >
             Hi, I'm Yvonne
           </Text>
