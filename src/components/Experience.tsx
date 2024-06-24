@@ -20,14 +20,14 @@ const Experience = () => {
       location: "Sydney, Australia",
       date: "Mar 2024 - Present",
       description: [
-        "Constructed live telemetry system with several AWS services including Timestream and Grafana, enabling real-time monitoring of race data.",
-        "Maintained team’s website using WordPress, ensuring seamless functionality and up-to-date content.",
+        "Constructed live telemetry system with several AWS services including Amplify and Timestream, enabling real-time monitoring of race data.",
+        "Maintained team’s website built with WordPress, ensuring seamless functionality and up-to-date content.",
       ],
     },
     {
       title: "Podcast Editor",
       company: "Australia Career Forum",
-      location: "Sydeny, Australia",
+      location: "Sydney, Australia",
       date: "Feb 2024 - Present",
       description: [
         "Edited and produced podcast content with GarageBand, improving audio quality and listener experience.",
