@@ -1,31 +1,21 @@
-# React + TypeScript + Vite
+<p align="center">
+  <img src="public/icon.svg" alt="Icon" width="70" height="70">
+</p>
+<h2 align="center">
+  <strong>yvonneyang.me</strong>
+</h2>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">This is the first version of <a href="https://yvonneyang.me">yvonneyang.me</a> built with React leveraging Chakra UI.</p>
 
-Currently, two official plugins are available:
+## 🛠️ set-up
+To be edited.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎨 color codes
+| Color       | Hex Code                                                                 |
+|-------------|--------------------------------------------------------------------------|
+| Cyan        | ![#00e6e6](https://via.placeholder.com/15/00e6e6/000000?text=+) `#00e6e6` |
+| Dark Gray   | ![#1b1b1b](https://via.placeholder.com/15/1b1b1b/000000?text=+) `#1b1b1b` |
+| Medium Gray | ![#9b9b9b](https://via.placeholder.com/15/9b9b9b/000000?text=+) `#9b9b9b` |
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# Yvonne
