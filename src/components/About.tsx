@@ -98,9 +98,11 @@ const About = () => {
               ))}
             </HStack>
             <Text color="#fff">
-              Apart from technology, I'm also fascinated by those cool vfx in
-              movies, the passion of blending technology and creativity fuels my
-              aspiration to become a <b>Pipeline Technical Director</b>.
+              Apart from technology, I'm also fascinated by vfx and motorsports,
+              the passion of blending technology and creativity driving me
+              towards a career that bridges my interests in both the VFX
+              industry as a pipeline technical director and in motorsports as a
+              software engineer.
             </Text>
           </Stack>
           <Image
