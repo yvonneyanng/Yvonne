@@ -94,7 +94,7 @@ const Experience = () => {
                   content: `""`,
                   position: "absolute",
                   bottom: "0",
-                  right: "0",
+                  left: "0",
                   width: "0%",
                   height: "2px",
                   backgroundColor: "#00e6e6", // Underline color

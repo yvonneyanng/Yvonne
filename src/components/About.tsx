@@ -1,6 +1,9 @@
 import { HStack, Stack, Text, Image } from "@chakra-ui/react";
 import SectionTitle from "./SectionTitle";
 
+// import { keyframes } from "@emotion/react";
+// import { css } from "@emotion/react";
+
 import headshot from "../assets/headshot.jpg";
 import js from "../assets/js.png";
 import python from "../assets/python.png";
@@ -24,6 +27,14 @@ const About = () => {
     react,
     sass,
   ];
+
+  // const shapeChangeAnimation = keyframes`
+  //   0%, 100% { transform: scale(1); border-bottom-left-radius: 50%; border-bottom-right-radius: 40%; border-top-right-radius: 30%;border-top-left-radius: 20%;}
+  //   20% { transform: scale(1); border-bottom-left-radius: 40%; border-bottom-right-radius: 40%; border-top-right-radius: 40%;border-top-left-radius: 40%;  }
+  //   40% { transform: scale(1); border-bottom-left-radius: 30%; border-bottom-right-radius: 30%; border-top-right-radius: 30%;border-top-left-radius: 30%;  }
+  //   60% { transform: scale(1); border-bottom-left-radius: 40%; border-bottom-right-radius: 40%; border-top-right-radius: 40%;border-top-left-radius: 40%;  }
+  //   80% { transform: scale(1); border-bottom-left-radius: 50%; border-bottom-right-radius: 50%; border-top-right-radius: 50%;border-top-left-radius: 50%;  }
+  // `;
 
   const titleStyle = {
     color: "#00e6e6",
@@ -98,6 +109,9 @@ const About = () => {
             boxSize={{ base: "150px", md: "300px" }}
             objectFit="cover"
             borderRadius="10px"
+            // css={css`
+            //   animation: ${shapeChangeAnimation} 2s infinite;
+            // `}
           />
         </Stack>
       </Stack>

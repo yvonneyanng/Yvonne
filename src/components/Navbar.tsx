@@ -59,6 +59,7 @@ function Navbar() {
           {pages.map((page) => (
             <Link
               key={page}
+              // to={`/${page.toLowerCase()}`}
               to={page.toLowerCase()}
               spy={true}
               smooth={true}
