@@ -8,52 +8,95 @@ import {
   Text,
 } from "@chakra-ui/react";
 import SectionTitle from "./SectionTitle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 
+type Experience = {
+  title: string;
+  company: string;
+  start?: Date;
+  end?: Date;
+  description: string[];
+  location: string;
+};
+
 const Experience = () => {
-  const experience = [
-    {
-      title: "Software Engineer",
-      company: "UTS Motorsports Electric",
-      location: "Sydney, Australia",
-      date: "Mar 2024 - Present",
-      description: [
-        "Constructed live telemetry system with several AWS services including Amplify and Timestream, enabling real-time monitoring of race data.",
-        "Maintained team’s website built with WordPress, ensuring seamless functionality and up-to-date content.",
-      ],
-    },
-    {
-      title: "Podcast Editor",
-      company: "Australia Career Forum",
-      location: "Sydney, Australia",
-      date: "Feb 2024 - Present",
-      description: [
-        "Edited and produced podcast content with GarageBand, improving audio quality and listener experience.",
-        "Worked with producers to align editing with narrative goals, ensuring smooth flow and audience engagement.",
-      ],
-    },
-    {
-      title: "Frontend Developer Intern",
-      company: "Shang-Chin Education",
-      location: "Taichung, Taiwan",
-      date: "Aug 2023 - Dec 2023",
-      description: [
-        "Developed user interface of a Mandarin tutoring website — baodaotalk.com using Next.js.",
-        "Designed an interactive quiz feature for baodaotalk.com to enhance learning engagement.",
-        "Enabled multilingual support for baodaotalk.com, accommodating 7 languages through internationalization.",
-        "Collaborated with full stack developer and UI designer to help optimize user experience of website.",
-      ],
-    },
-  ];
-  const [clicked, setClicked] = useState(0);
-  const handleChange = (event: { target: { value: string } }) => {
-    const selectedIndex = parseInt(event.target.value, 10);
-    setClicked(selectedIndex);
-    // You can also call setClicked or any other method to handle the selection
-    console.log("Selected company:", experience[selectedIndex].company); // Just for debug
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_BASE_URL}/api/experience`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch experiences");
+        }
+        const data: Experience[] = await response.json();
+        setExperiences(data);
+        setLoading(false);
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "An unknown error occurred";
+        setError(errorMessage);
+        setLoading(false);
+      }
+    };
+
+    fetchExperiences();
+  }, []);
+
+  if (loading) {
+    return (
+      <Stack w="100vw" h="100vh" align="center" justify="center" bg="#2b2b2b">
+        <Text color="#fff" mt={3}>
+          Loading Experience...
+        </Text>
+      </Stack>
+    );
+  }
+
+  if (error) {
+    return (
+      <Stack w="100vw" h="100vh" align="center" justify="center" bg="#2b2b2b">
+        <Text color="red.500" fontSize="lg">
+          Error: {error}
+        </Text>
+      </Stack>
+    );
+  }
+
+  const selectedExperience = experiences[selectedIndex] || {};
+
+  const formatDate = (dateString: Date): string => {
+    const date = new Date(dateString);
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    return `${month} ${year}`;
   };
+  // const [clicked, setClicked] = useState(0);
+  // const handleChange = (event: { target: { value: string } }) => {
+  //   const selectedIndex = parseInt(event.target.value, 10);
+  //   setClicked(selectedIndex);
+  // };
 
   return (
     <>
@@ -81,11 +124,12 @@ const Experience = () => {
             display={{ base: "none", md: "inline-flex" }}
             mt="10px"
           >
-            {experience.map((desc, index) => (
+            {experiences.map((experience, index) => (
               <Box
                 position="relative"
+                key={index}
                 _hover={{
-                  color: "#00e6e6", // Change text color on hover
+                  color: "#00e6e6",
                   _after: {
                     width: "100%",
                   },
@@ -97,14 +141,14 @@ const Experience = () => {
                   left: "0",
                   width: "0%",
                   height: "2px",
-                  backgroundColor: "#00e6e6", // Underline color
+                  backgroundColor: "#00e6e6",
                   transition: "width 0.3s ease",
                 }}
               >
                 <Text
                   key={index}
-                  color={index === clicked ? "#00e6e6" : "#fff"}
-                  onClick={() => setClicked(index)}
+                  color={index === selectedIndex ? "#00e6e6" : "#fff"}
+                  onClick={() => setSelectedIndex(index)}
                   cursor="pointer"
                   fontFamily="monospace"
                   fontSize="15px"
@@ -112,9 +156,8 @@ const Experience = () => {
                   py="10px"
                   px="10px"
                   whiteSpace="nowrap"
-                  // transition="color 0.3s ease"
                 >
-                  {desc.company}
+                  {experience["company"]}
                 </Text>
               </Box>
             ))}
@@ -126,11 +169,11 @@ const Experience = () => {
               my="25px"
               fontSize="15px"
               borderColor="#00e6e6"
-              onChange={handleChange}
+              onChange={(e) => setSelectedIndex(parseInt(e.target.value))}
             >
-              {experience.map((desc, index) => (
+              {experiences.map((experience, index) => (
                 <option key={index} value={index}>
-                  {desc.company}
+                  {experience["company"]}
                 </option>
               ))}
             </Select>
@@ -142,33 +185,42 @@ const Experience = () => {
                 fontWeight="900"
                 w="full"
               >
-                {experience[clicked].title}
+                {selectedExperience.title || "N/A"}
               </Text>
               <Text
                 variant="subtitle2"
                 color="#9b9b9b"
                 fontSize={{ base: "12px", md: "18px" }}
               >
-                {experience[clicked].date} | {experience[clicked].location}
+                {selectedExperience.start
+                  ? formatDate(selectedExperience.start)
+                  : "N/A"}{" "}
+                -{" "}
+                {selectedExperience.end
+                  ? formatDate(selectedExperience.end)
+                  : "Present"}{" "}
+                | {selectedExperience.location}
               </Text>
             </Stack>
             <List mt="20px" spacing="10px" fontSize="15px">
-              {experience[clicked].description.map((desc, index) => (
-                <Flex color="#fff" align="start">
-                  <ListIcon
-                    as={VscDebugBreakpointLogUnverified}
-                    color="#00e6e6"
-                    fontSize={{ base: "15px", md: "20px" }}
-                  />
-                  <Text
-                    key={index}
-                    color="#fff"
-                    fontSize={{ base: "12px", md: "15px" }}
-                  >
-                    {desc}
-                  </Text>
-                </Flex>
-              ))}
+              {experiences[selectedIndex].description.map(
+                (experience, index) => (
+                  <Flex color="#fff" align="start" key={index}>
+                    <ListIcon
+                      as={VscDebugBreakpointLogUnverified}
+                      color="#00e6e6"
+                      fontSize={{ base: "15px", md: "20px" }}
+                    />
+                    <Text
+                      key={index}
+                      color="#fff"
+                      fontSize={{ base: "12px", md: "15px" }}
+                    >
+                      {experience}
+                    </Text>
+                  </Flex>
+                )
+              )}
             </List>
           </Stack>
         </Stack>

@@ -11,29 +11,63 @@ import {
 
 import SectionTitle from "./SectionTitle";
 import { FaGithubSquare } from "react-icons/fa";
+import { useState, useEffect } from "react";
+
+type Project = {
+  name: string;
+  description: string;
+  tags: string[];
+  links: string;
+};
 
 const Project = () => {
-  const projects = [
-    {
-      name: "Virtual Painter",
-      introduction: "Hand Tracking Drawing Application",
-      technologies: ["Python", "OpenCV", "MediaPipe"],
-      link: "https://github.com/yvonneyanng/virtual-painter",
-    },
-    {
-      name: "LinkedOut",
-      introduction: "Cross-Platform Mobile Application",
-      technologies: ["React Native", "Expo CLI"],
-      link: "https://github.com/yvonneyanng/LinkedOut",
-    },
-    {
-      name: "Triolingo",
-      introduction: "iOS Application",
-      technologies: ["Swift"],
-      link: "https://github.com/yvonneyanng/Triolingo",
-    },
-    // Add more projects as needed
-  ];
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_BASE_URL}/api/projects`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch projects");
+        }
+        const data: Project[] = await response.json();
+        setProjects(data);
+        setLoading(false);
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "An unknown error occurred";
+        setError(errorMessage);
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <Stack w="100vw" h="100vh" align="center" justify="center" bg="#2b2b2b">
+        <Text color="#fff" mt={3}>
+          Loading Projects...
+        </Text>
+      </Stack>
+    );
+  }
+
+  if (error) {
+    return (
+      <Stack w="100vw" h="100vh" align="center" justify="center" bg="#2b2b2b">
+        <Text color="red.500" fontSize="lg">
+          Error: {error}
+        </Text>
+      </Stack>
+    );
+  }
+
   return (
     <>
       <Stack
@@ -53,19 +87,7 @@ const Project = () => {
           mt={{ base: "20px", md: "50px" }}
         >
           {projects.map((project, index) => (
-            <GridItem
-              key={index}
-              bg="#1b1b1b"
-              py={7}
-              px={7}
-              borderRadius={10}
-              // boxShadow={`
-              //   inset 0 0 5px #00e6e6,  /* Inner light glow */
-              //   inset 0 0 10px #00e6e6, /* More inner glow */
-              //   0 0 5px #00e6e6,       /* Slight outer glow for depth */
-              //   0 0 10px #00e6e6       /* More outer glow for depth */
-              // `}
-            >
+            <GridItem key={index} bg="#1b1b1b" py={7} px={7} borderRadius={10}>
               <HStack justify="space-between" align="center">
                 <Text
                   fontSize={{ base: "18px", md: "20px" }}
@@ -73,7 +95,7 @@ const Project = () => {
                   fontFamily="monospace"
                   color="#00e6e6"
                 >
-                  {project.name}
+                  {project["name"]}
                 </Text>
                 <Icon
                   as={FaGithubSquare}
@@ -81,18 +103,18 @@ const Project = () => {
                   fontSize={25}
                   cursor="pointer"
                   _hover={{ color: "#00e6e6" }}
-                  onClick={() => window.open(project.link, "_blank")}
+                  onClick={() => window.open(project["links"], "_blank")}
                 />
               </HStack>
               <Text
                 color="#9b9b9b"
-                mt={5}
+                mt={3}
                 fontSize={{ base: "13px", md: "15px" }}
               >
-                {project.introduction}
+                {project["description"]}
               </Text>
               <Wrap mt={5}>
-                {project.technologies.map((tech, index) => (
+                {project["tags"].map((tech, index) => (
                   <Tag key={index} fontSize={{ base: "13px", md: "15px" }}>
                     {tech}
                   </Tag>
