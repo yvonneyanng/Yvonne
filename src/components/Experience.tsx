@@ -7,9 +7,10 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import SectionTitle from "./SectionTitle";
-import { useState, useEffect } from "react";
 
+import SectionTitle from "./SectionTitle";
+import { FeedbackMessage } from "./FeedbackMessage";
+import { useState, useEffect } from "react";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 
 type Experience = {
@@ -50,23 +51,13 @@ const Experience = () => {
     fetchExperiences();
   }, []);
 
-  if (loading) {
+  if (loading || error) {
     return (
-      <Stack w="100vw" h="100vh" align="center" justify="center" bg="#2b2b2b">
-        <Text color="#fff" mt={3}>
-          Loading Experience...
-        </Text>
-      </Stack>
-    );
-  }
-
-  if (error) {
-    return (
-      <Stack w="100vw" h="100vh" align="center" justify="center" bg="#2b2b2b">
-        <Text color="red.500" fontSize="lg">
-          Error: {error}
-        </Text>
-      </Stack>
+      <FeedbackMessage
+        text={loading ? "Loading Projects..." : "Oops, something's wrong..."}
+        fontColor={loading ? "#00e6e6" : "#c30010"}
+        section="experience"
+      />
     );
   }
 
@@ -92,11 +83,6 @@ const Experience = () => {
     const year = date.getFullYear();
     return `${month} ${year}`;
   };
-  // const [clicked, setClicked] = useState(0);
-  // const handleChange = (event: { target: { value: string } }) => {
-  //   const selectedIndex = parseInt(event.target.value, 10);
-  //   setClicked(selectedIndex);
-  // };
 
   return (
     <>

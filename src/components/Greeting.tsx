@@ -41,7 +41,6 @@ const Home = () => {
           >
             Hi, I'm Yvonne
           </Text>
-          {/* <BlurIn word={"Hi, I'm Yvonne"}></BlurIn> */}
           <Text
             textAlign="center"
             color="#9b9b9b"

@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 import SectionTitle from "./SectionTitle";
+import { FeedbackMessage } from "./FeedbackMessage";
 import { FaGithubSquare } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
@@ -17,7 +18,7 @@ type Project = {
   name: string;
   description: string;
   tags: string[];
-  links: string;
+  link: string;
 };
 
 const Project = () => {
@@ -48,23 +49,13 @@ const Project = () => {
     fetchProjects();
   }, []);
 
-  if (loading) {
+  if (loading || error) {
     return (
-      <Stack w="100vw" h="100vh" align="center" justify="center" bg="#2b2b2b">
-        <Text color="#fff" mt={3}>
-          Loading Projects...
-        </Text>
-      </Stack>
-    );
-  }
-
-  if (error) {
-    return (
-      <Stack w="100vw" h="100vh" align="center" justify="center" bg="#2b2b2b">
-        <Text color="red.500" fontSize="lg">
-          Error: {error}
-        </Text>
-      </Stack>
+      <FeedbackMessage
+        text={loading ? "Loading Projects..." : "Oops, something's wrong..."}
+        fontColor={loading ? "#00e6e6" : "#c30010"}
+        section="project"
+      />
     );
   }
 
@@ -103,7 +94,7 @@ const Project = () => {
                   fontSize={25}
                   cursor="pointer"
                   _hover={{ color: "#00e6e6" }}
-                  onClick={() => window.open(project["links"], "_blank")}
+                  onClick={() => window.open(project["link"], "_blank")}
                 />
               </HStack>
               <Text
