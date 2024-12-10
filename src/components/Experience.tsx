@@ -54,7 +54,7 @@ const Experience = () => {
   if (loading || error) {
     return (
       <FeedbackMessage
-        text={loading ? "Loading Projects..." : "Oops, something's wrong..."}
+        text={loading ? "Loading..." : "Uh oh, something's wrong..."}
         fontColor={loading ? "#00e6e6" : "#c30010"}
         section="experience"
       />
