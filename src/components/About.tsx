@@ -28,18 +28,11 @@ const About = () => {
     sass,
   ];
 
-  // const shapeChangeAnimation = keyframes`
-  //   0%, 100% { transform: scale(1); border-bottom-left-radius: 50%; border-bottom-right-radius: 40%; border-top-right-radius: 30%;border-top-left-radius: 20%;}
-  //   20% { transform: scale(1); border-bottom-left-radius: 40%; border-bottom-right-radius: 40%; border-top-right-radius: 40%;border-top-left-radius: 40%;  }
-  //   40% { transform: scale(1); border-bottom-left-radius: 30%; border-bottom-right-radius: 30%; border-top-right-radius: 30%;border-top-left-radius: 30%;  }
-  //   60% { transform: scale(1); border-bottom-left-radius: 40%; border-bottom-right-radius: 40%; border-top-right-radius: 40%;border-top-left-radius: 40%;  }
-  //   80% { transform: scale(1); border-bottom-left-radius: 50%; border-bottom-right-radius: 50%; border-top-right-radius: 50%;border-top-left-radius: 50%;  }
-  // `;
-
   const titleStyle = {
     color: "#00e6e6",
     fontWeight: "bold",
   };
+
   return (
     <>
       <Stack
@@ -81,14 +74,6 @@ const About = () => {
               justify={{ base: "center", md: "start" }}
             >
               {technologies.map((tech, index) => (
-                // <HStack key={index} flexDirection="row">
-                //   <Text color="#00e6e6" fontSize="10px">
-                //     ▹
-                //   </Text>
-                //   <Text variant="body1" color="#fff">
-                //     {tech}
-                //   </Text>
-                // </HStack>
                 <Image
                   src={tech}
                   alt="Tech"
@@ -98,11 +83,9 @@ const About = () => {
               ))}
             </HStack>
             <Text color="#fff">
-              Apart from technology, I'm also fascinated by vfx and motorsports,
-              the passion of blending technology and creativity driving me
-              towards a career that bridges my interests in both the VFX
-              industry as a pipeline technical director and in motorsports as a
-              software engineer.
+              Apart from technology, I'm also fascinated by vfx and films. The
+              passion of blending technology and creativity driving me towards a
+              career to become a pipeline technical director.
             </Text>
           </Stack>
           <Image
