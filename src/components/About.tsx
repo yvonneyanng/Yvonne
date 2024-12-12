@@ -94,9 +94,6 @@ const About = () => {
             boxSize={{ base: "150px", md: "300px" }}
             objectFit="cover"
             borderRadius="10px"
-            // css={css`
-            //   animation: ${shapeChangeAnimation} 2s infinite;
-            // `}
           />
         </Stack>
       </Stack>
